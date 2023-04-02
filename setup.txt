@@ -1,0 +1,3 @@
+conda create -n DTC21 python=3.8
+
+pip install pandas google-search-results 

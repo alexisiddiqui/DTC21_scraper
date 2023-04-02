@@ -11,13 +11,13 @@ from urllib.parse import urlsplit, parse_qsl
 import pandas as pd
 
 
-def profile_results():
+def profile_results(name):
     print("Extracting profile results..")
 
     params = {
         "api_key": "...",                     # https://serpapi.com/manage-api-key
         "engine": "google_scholar_profiles",  # profile results search engine
-        "mauthors": "blizzard",               # search query
+        "mauthors": name,               # search query
     }
     search = GoogleSearch(params)
 
