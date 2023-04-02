@@ -11,13 +11,13 @@ from urllib.parse import urlsplit, parse_qsl
 import pandas as pd
 
 
-def profile_results():
+def profile_results(search_name):
     print("Extracting profile results..")
 
     params = {
-        "api_key": "...",                     # https://serpapi.com/manage-api-key
+        "api_key": "c20b53d211010906d08aa684b77ebd81b1dd644aa15bb8f0601383f6ec7195e1",                     # https://serpapi.com/manage-api-key
         "engine": "google_scholar_profiles",  # profile results search engine
-        "mauthors": "blizzard",               # search query
+        "mauthors": search_name,               # search query
     }
     search = GoogleSearch(params)
 
@@ -59,7 +59,7 @@ def profile_results():
     return profile_results_data
 
 
-def author_results():
+def author_results(search_name):
     print("extracting author results..")
 
     author_results_data = []
@@ -111,7 +111,7 @@ def author_results():
     return author_results_data
 
 
-def all_author_articles():
+def all_author_articles(search_name):
     author_article_results_data = []
 
     for index, author_id in enumerate(profile_results(), start=1):
@@ -162,22 +162,22 @@ def all_author_articles():
     return author_article_results_data
 
 
-def save_author_result_to_csv():
+def save_author_result_to_csv(search_name):
     print("Waiting for author results to save..")
-    pd.DataFrame(data=profile_results()).to_csv("google_scholar_author_results.csv", encoding="utf-8", index=False)
+    pd.DataFrame(data=profile_results()).to_csv(search_name+"_google_scholar_author_results.csv", encoding="utf-8", index=False)
 
     print("Author Results Saved.")
 
 
-def save_author_articles_to_csv():
+def save_author_articles_to_csv(search_name):
     print("Waiting for author articles to save..")
-    pd.DataFrame(data=profile_results()).to_csv("google_scholar_author_articles.csv", encoding="utf-8", index=False)
+    pd.DataFrame(data=profile_results()).to_csv(search_name+"_google_scholar_author_articles.csv", encoding="utf-8", index=False)
 
     print("Author Articles Saved.")
 
 
-def save_profile_results_to_csv():
+def save_profile_results_to_csv(search_name):
     print("Waiting for profile results to save..")
-    pd.DataFrame(data=profile_results()).to_csv("google_scholar_profile_results.csv", encoding="utf-8", index=False)
+    pd.DataFrame(data=profile_results()).to_csv(search_name+"google_scholar_profile_results.csv", encoding="utf-8", index=False)
 
     print("Profile Results Saved.")
