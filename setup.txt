@@ -1,3 +1,5 @@
-conda create -n DTC21 python=3.8
+conda create -n DTC21 python=3.8 ipykernel
 
 pip install pandas google-search-results 
+
+conda activate DTC21
